@@ -11,10 +11,13 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy project files
 COPY . .
 
+# Ensure static and media directories exist and are writable
+RUN mkdir -p /app/static /app/media && chmod -R 777 /app/static /app/media
+
 # Ensure entrypoint.sh is executable
 RUN chmod +x /app/entrypoint.sh
 
-# Expose the port for Django
+# Expose port
 EXPOSE 1234
 
 # Run entrypoint script on container start
