@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-i$@otchi!=g4_i*hy4p*=!we@qc6lt-s1^5h3h_bnob!0cfihp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["roi-image-processing-production.up.railway.app"]
 
 
 # Application definition
