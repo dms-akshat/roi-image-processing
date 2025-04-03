@@ -1,28 +1,21 @@
-# Use official Python image as base
+# Use official Python image
 FROM python:3.10
 
-# Set the working directory inside the container
+# Set working directory
 WORKDIR /app
 
-# Copy the requirements file first (to leverage Docker caching)
+# Copy requirements first (for better caching)
 COPY requirements.txt .
-
-# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the project files
+# Copy project files
 COPY . .
 
-# Expose port 12345 for Django
+# Ensure entrypoint.sh is executable
+RUN chmod +x /app/entrypoint.sh
+
+# Expose the port for Django
 EXPOSE 1234
 
-# Ensure media and static folders exist
-RUN mkdir -p /app/media/uploads /app/media/processed /app/static
-
-# Run migrations and collect static files
-RUN python manage.py makemigrations
-RUN python manage.py migrate
-RUN python manage.py collectstatic --noinput
-
-# Start the Django application on port 1234
-CMD ["gunicorn", "--bind", "0.0.0.0:1234", "image_processing.wsgi:application"]
+# Run entrypoint script on container start
+ENTRYPOINT ["/app/entrypoint.sh"]

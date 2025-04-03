@@ -3,10 +3,11 @@ version: '3.8'
 services:
   web:
     build: .
-    container_name: django_app
+    container_name: django_image_processing
     ports:
       - "1234:1234"
     volumes:
+      - ./db.sqlite3:/app/db.sqlite3  # Persist SQLite database
       - ./media:/app/media  # Persist media files
       - ./static:/app/static  # Persist static files
     environment:
