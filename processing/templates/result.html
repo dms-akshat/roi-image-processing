@@ -2,20 +2,53 @@
 {% block content %}
 <div class="container mt-5">
     {% if original_image %}
-        <h2 class="text-center">Processed Image</h2>
-        <div class="row">
-            <div class="col-md-6"><img src="{{ original_image }}" class="img-fluid"></div>
-            <div class="col-md-6"><img src="{{ processed_image }}" class="img-fluid"></div>
+        <h2 class="text-center mb-4">Processed Image</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Original Image</h5>
+                        <img src="{{ original_image }}" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Processed Image</h5>
+                        <img src="{{ processed_image }}" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
         </div>
-        <p class="text-center mt-3">Similarity Score: {{ similarity_score }}</p>
-        <a href="{{ processed_image }}" download class="btn btn-primary">Download Processed Image</a>
+        <div class="text-center mt-3">
+            <p class="fw-bold">Similarity Score: {{ similarity_score }}</p>
+            <a href="{{ processed_image }}" download class="btn btn-primary">Download Processed Image</a>
+        </div>
     {% else %}
-        <h2 class="text-center">Processed Images</h2>
+        <h2 class="text-center mb-4">Processed Images</h2>
         <div class="row">
             {% for img in images %}
-                <div class="col-md-3"><img src="{{ img.original }}" class="img-fluid"></div>
-                <div class="col-md-3"><img src="{{ img.processed }}" class="img-fluid"></div>
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Original</h5>
+                            <img src="{{ img.original }}" class="img-fluid rounded mb-2">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Processed</h5>
+                            <img src="{{ img.processed }}" class="img-fluid rounded mb-2">
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'download_zip' %}" class="btn btn-success">Download All Processed Images</a>
         </div>
     {% endif %}
 </div>
