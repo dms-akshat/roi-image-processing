@@ -28,6 +28,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["roi-image-processing-production.up.railway.app"]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://roi-image-processing-production.up.railway.app"
+]
+
 
 # Application definition
 
@@ -129,3 +133,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+INSTALLED_APPS += ["corsheaders"]
+
+MIDDLEWARE.insert(1, "corsheaders.middleware.CorsMiddleware")
+
+CORS_ALLOWED_ORIGINS = [
+    "https://roi-image-processing-production.up.railway.app"
+]
+

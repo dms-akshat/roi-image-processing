@@ -13,3 +13,4 @@ scipy==1.15.2
 sqlparse==0.5.3
 tifffile==2025.3.30
 gunicorn
+django-cors-headers
