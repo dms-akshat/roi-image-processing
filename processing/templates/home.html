@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container min-vh-100 d-flex flex-column justify-content-center align-items-center">
+    <div class="text-center p-4 bg-white shadow rounded-3 w-75">
+        <h1 class="text-uppercase fw-bold mb-2">Department of Information Technology</h1>
+        <h2 class="text-uppercase fw-semibold mb-4">National Institute of Technology Karnataka, Surathkal-575025</h2>
+        <div class="mb-4">
+            <h3 class="fw-semibold mb-2">Information Assurance and Security (IT352) Course Project</h3>
+            <p class="fw-semibold fs-5">Title: "ROI detection in Images using statistical methods"</p>
+        </div>
+        <div class="mb-4">
+            <p class="fw-medium">Carried out by</p>
+            <p>Akshat Chaturvedi (221IT005)</p>
+            <p class="fw-medium">During Academic Session January – April 2025</p>
+        </div>
+        <a href="{% url 'upload' %}" class="btn btn-primary w-50 py-2">Press here to Enter Input</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    {% if original_image %}
+        <h2 class="text-center">Processed Image</h2>
+        <div class="row">
+            <div class="col-md-6"><img src="{{ original_image }}" class="img-fluid"></div>
+            <div class="col-md-6"><img src="{{ processed_image }}" class="img-fluid"></div>
+        </div>
+        <p class="text-center mt-3">Similarity Score: {{ similarity_score }}</p>
+        <a href="{{ processed_image }}" download class="btn btn-primary">Download Processed Image</a>
+    {% else %}
+        <h2 class="text-center">Processed Images</h2>
+        <div class="row">
+            {% for img in images %}
+                <div class="col-md-3"><img src="{{ img.original }}" class="img-fluid"></div>
+                <div class="col-md-3"><img src="{{ img.processed }}" class="img-fluid"></div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
